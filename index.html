@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Smith - Professional Janitorial Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .cv-header {
+            background: var(--gradient);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .cv-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cv-header .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Navigation */
+        .cv-nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .cv-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .cv-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .cv-nav a:hover {
+            color: var(--secondary);
+            background: var(--light);
+        }
+        
+        /* Main Content */
+        .cv-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+        
+        .main-column, .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        /* Experience */
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--secondary);
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item .company {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .timeline-item .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item ul {
+            padding-left: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .skill-category h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-list i {
+            color: var(--success);
+            font-size: 0.8rem;
+        }
+        
+        /* Education & Certifications */
+        .education-item, .certification-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 10px;
+        }
+        
+        .education-item h4, .certification-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item p, .certification-item p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* About Me */
+        .about-content {
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+        
+        /* References */
+        .reference-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .reference-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .cv-footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .cv-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cv-nav ul {
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .cv-header h1 {
+                font-size: 2rem;
+            }
+            
+            .cv-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .container {
+                max-width: none;
+            }
+            
+            .cv-nav, .cv-footer {
+                display: none;
+            }
+            
+            .cv-content {
+                display: block;
+            }
+            
+            .main-column, .sidebar {
+                box-shadow: none;
+                padding: 0;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="cv-header">
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="John Smith" class="profile-image">
+            <h1>John Smith</h1>
+            <div class="title">Senior Janitorial Specialist & Facilities Maintenance Expert</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>john.smith@email.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Chicago, IL</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/johnsmith</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="cv-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+                <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                <li><a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+                <li><a href="#references"><i class="fas fa-comments"></i> References</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container cv-content">
+        <!-- Main Column -->
+        <div class="main-column">
+            <!-- About Me -->
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="about-content">
+                    <p>Dedicated and reliable janitorial professional with over 15 years of experience in maintaining clean, safe, and organized environments. Expertise in commercial, residential, and medical facility cleaning with a strong focus on detail-oriented work and customer satisfaction.</p>
+                    <p>Known for exceptional work ethic, time management skills, and ability to work independently or as part of a team. Committed to using eco-friendly cleaning products and sustainable practices.</p>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience" class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="timeline-item">
+                    <h3>Senior Janitorial Specialist</h3>
+                    <span class="company">Premium Office Solutions, Chicago, IL</span>
+                    <span class="date">2018 - Present</span>
+                    <ul>
+                        <li>Manage cleaning operations for 50,000+ sq ft commercial office space</li>
+                        <li>Train and supervise team of 5 junior cleaning staff members</li>
+                        <li>Implement eco-friendly cleaning practices reducing chemical usage by 40%</li>
+                        <li>Coordinate with facility management for special projects and deep cleaning</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Lead Custodian</h3>
+                    <span class="company">City Medical Center, Chicago, IL</span>
+                    <span class="date">2010 - 2018</span>
+                    <ul>
+                        <li>Performed specialized sanitization and disinfection in medical facilities</li>
+                        <li>Maintained compliance with healthcare cleaning standards and regulations</li>
+                        <li>Managed inventory of cleaning supplies and equipment</li>
+                        <li>Responded to emergency cleaning situations in critical care areas</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Residential Cleaning Specialist</h3>
+                    <span class="company">Elite Home Services, Chicago, IL</span>
+                    <span class="date">2004 - 2010</span>
+                    <ul>
+                        <li>Provided high-end residential cleaning services for luxury homes</li>
+                        <li>Developed customized cleaning plans based on client preferences</li>
+                        <li>Maintained 98% client satisfaction rating over 6 years</li>
+                        <li>Managed own schedule and client relationships independently</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Skills -->
+            <section id="skills" class="section">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-broom"></i> Cleaning Techniques</h4>
+                        <ul class="skill-list">
+                            <li><i class="fas fa-check"></i> Deep cleaning</li>
+                            <li><i class="fas fa-check"></i> Sanitization</li>
+                            <li><i class="fas fa-check"></i> Disinfection</li>
+                            <li><i class="fas fa-check"></i> Floor care</li>
+                            <li><i class="fas fa-check"></i> Window cleaning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-toolbox"></i> Equipment Operation</h4>
+                        <ul class="skill-list">
+                            <li><i class="fas fa-check"></i> Floor buffers</li>
+                            <li><i class="fas fa-check"></i> Carpet cleaners</li>
+                            <li><i class="fas fa-check"></i> Pressure washers</li>
+                            <li><i class="fas fa-check"></i> Vacuum systems</li>
+                            <li><i class="fas fa-check"></i> Cleaning carts</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-users"></i> Soft Skills</h4>
+                        <ul class="skill-list">
+                            <li><i class="fas fa-check"></i> Time management</li>
+                            <li><i class="fas fa-check"></i> Attention to detail</li>
+                            <li><i class="fas fa-check"></i> Reliability</li>
+                            <li><i class="fas fa-check"></i> Team leadership</li>
+                            <li><i class="fas fa-check"></i> Customer service</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section id="education" class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <h4>High School Diploma</h4>
+                    <p>Chicago Central High School</p>
+                    <p class="date">2000 - 2004</p>
+                </div>
+                
+                <div class="education-item">
+                    <h4>Facility Maintenance Certificate</h4>
+                    <p>Chicago Vocational Institute</p>
+                    <p class="date">2005</p>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section id="certifications" class="section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certification-item">
+                    <h4>OSHA Safety Certification</h4>
+                    <p>Occupational Safety & Health Administration</p>
+                    <p class="date">2020</p>
+                </div>
+                
+                <div class="certification-item">
+                    <h4>Green Cleaning Professional</h4>
+                    <p>International Sanitary Supply Association</p>
+                    <p class="date">2019</p>
+                </div>
+                
+                <div class="certification-item">
+                    <h4>Healthcare Environmental Services</h4>
+                    <p>Association for the Healthcare Environment</p>
+                    <p class="date">2015</p>
+                </div>
+            </section>
+
+            <!-- References -->
+            <section id="references" class="section">
+                <h2 class="section-title">References</h2>
+                <div class="reference-item">
+                    <h4>Michael Johnson</h4>
+                    <p>Facility Manager, Premium Office Solutions</p>
+                    <p>(555) 987-6543</p>
+                    <p>michael.johnson@premiumoffice.com</p>
+                </div>
+                
+                <div class="reference-item">
+                    <h4>Sarah Williams</h4>
+                    <p>Director of Environmental Services, City Medical Center</p>
+                    <p>(555) 456-7890</p>
+                    <p>s.williams@citymedical.org</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="cv-footer">
+        <div class="container">
+            <p>© 2024 John Smith - Professional Janitorial Services</p>
+            <p>Available for full-time, part-time, and contract positions</p>
+        </div>
+    </footer>
+</body>
+</html>
